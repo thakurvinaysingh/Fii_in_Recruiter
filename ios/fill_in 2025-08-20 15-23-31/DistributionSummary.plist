@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fill_in.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>355C4DB5772B1A1EC67021866340445F6784D130</string>
+				<key>dateExpires</key>
+				<string>02/04/26</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>0.12.0</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>355C4DB5772B1A1EC67021866340445F6784D130</string>
+						<key>dateExpires</key>
+						<string>02/04/26</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>hermes.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>U3DHCQHJ4V</string>
+						<key>name</key>
+						<string>Faisal Saleh</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>0.12.0</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>U3DHCQHJ4V.org.reactjs.native.example.fill-in</string>
+				<key>aps-environment</key>
+				<string>development</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>U3DHCQHJ4V</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>fill_in.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>9454e8b4-7ba5-4828-abad-ac5f159005f0</string>
+				<key>dateExpires</key>
+				<string>22/06/26</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: org.reactjs.native.example.fill-in</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>U3DHCQHJ4V</string>
+				<key>name</key>
+				<string>Faisal Saleh</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

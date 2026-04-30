@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1026549752959",
+    "project_id": "fill-in-test",
+    "storage_bucket": "fill-in-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026549752959:android:cc54735a34a0a269b00b4a",
+        "android_client_info": {
+          "package_name": "com.fill_in"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDT82GM0txRWNEpoAiL7C91oEQQ5RA7cE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
