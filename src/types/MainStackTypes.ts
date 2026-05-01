@@ -19,6 +19,11 @@ export type MainStackIF = {
   SEARCH: undefined;
   CANDIDATE_PROFILE: {candidateId: number; jobId: number};
   SCHEDULE_INTERVIEW: {candidateId: number; id?: number; jobId?: number};
+  INTERVIEW_CALENDAR: {
+    candidateId: number;
+    jobId?: number;
+    interviewId?: number; // PASSED IF RESCHEDULING AN EXISTING INTERVIEW
+  };
   RATING_REVIEWS: {
     name: string;
     profession: string;

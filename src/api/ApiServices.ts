@@ -427,6 +427,52 @@ const gettingInterviewList = async () => {
   }
 };
 
+// INTERVIEW LIST FOR A DATE RANGE (USED BY CALENDAR – ONE MONTH AT A TIME)
+// EXAMPLE: GET /interview-list?from=2026-04-01&to=2026-04-30
+const gettingInterviewListByRange = async (from: string, to: string) => {
+  try {
+    const response = await ApiClient.get(`interview-list`, {
+      params: {from, to},
+    });
+    return {success: true, data: response.data};
+  } catch (err: any) {
+    const errMsg =
+      err?.response?.data?.message ||
+      'Error in Create/Update with no error message';
+    return {success: false, err: errMsg};
+  }
+};
+
+// RESCHEDULE AN ALREADY SCHEDULED INTERVIEW
+// PATH: POST /reschedule-interview/{id}
+// BODY: same shape as schedule-interview (date YYYY-MM-DD, time HH:mm:ss / HH:mm)
+const reschedulingInterview = async (
+  id: number,
+  payload: {
+    candidate_id: number;
+    job_id?: number;
+    title: string;
+    date: string;
+    time: string;
+    end_time: string;
+    link: string;
+    notes: string;
+  },
+) => {
+  try {
+    const response = await ApiClient.post(
+      `reschedule-interview/${id}`,
+      payload,
+    );
+    return {success: true, data: response?.data};
+  } catch (err: any) {
+    const errMsg =
+      err?.response?.data?.message ||
+      'Error in reschedule interview with no message';
+    return {success: false, err: errMsg};
+  }
+};
+
 // GETTING ABOUT US AND PRIVACY POLICY DATA
 const gettingSettingsData = async () => {
   try {
@@ -656,8 +702,10 @@ export {
   gettingAllCandidate,
   viewApplicants,
   schedulingInterview,
+  reschedulingInterview,
   gettingApplicantsById,
   gettingInterviewList,
+  gettingInterviewListByRange,
   gettingSettingsData,
   gettingScheduleInterview,
   changingEmailOTP,

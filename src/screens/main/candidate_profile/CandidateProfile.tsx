@@ -149,11 +149,14 @@ const CandidateProfile = () => {
     }
   };
   const handleInterviewPress = () => {
-    // navigation.navigate('SCHEDULE_INTERVIEW', {
-    //   candidateId: profileData.id,
-    //   jobId: params.jobId,
-    // });
-    navigation.navigate('CANDIDATE_APPLIED_JOBS', {id: profileData.id});
+    // Recruiter taps "Schedule Interview" / "Reschedule Interview".
+    // Always route to the new month-view calendar screen. The calendar
+    // itself decides whether the recruiter is creating a new interview
+    // or rescheduling an existing one (based on the API result).
+    navigation.navigate('INTERVIEW_CALENDAR', {
+      candidateId: profileData.id,
+      jobId: params.jobId,
+    });
   };
 
   const paramsToPass = {
@@ -888,7 +891,11 @@ const CandidateProfile = () => {
                   {profileData.applied_our_Job && (
                     <View style={GLOBALSTYLE.mg_top_s}>
                       <Button
-                        _TEXT="Schedule Interview"
+                        _TEXT={
+                          profileData.is_schedule
+                            ? 'Reschedule Interview'
+                            : 'Schedule Interview'
+                        }
                         _ONPRESS={handleInterviewPress}
                         _BTNSTYLE={GLOBALSTYLE.btn_container}
                         _TEXT_STYLE={GLOBALSTYLE.button}

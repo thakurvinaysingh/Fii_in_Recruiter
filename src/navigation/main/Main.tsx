@@ -31,6 +31,7 @@ import {
   JobDetails,
   InterviewDetails,
   CandidateAppliedJobs,
+  InterviewCalendar,
 } from '../../components/store/ScreenStore';
 
 const Main = () => {
@@ -76,6 +77,10 @@ const Main = () => {
         <Stack.Screen
           name="CANDIDATE_APPLIED_JOBS"
           component={CandidateAppliedJobs}
+        />
+        <Stack.Screen
+          name="INTERVIEW_CALENDAR"
+          component={InterviewCalendar}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   apple,
   authLogo,
@@ -32,7 +32,7 @@ import {
   useFocusEffect,
   DeviceInfo,
 } from '../../../components/store/ExternalLibrary';
-import {AuthStackParamList} from '../../../types/AuthStack';
+import { AuthStackParamList } from '../../../types/AuthStack';
 import {
   setAuthToken,
   setIsLoginSuccess,
@@ -40,9 +40,9 @@ import {
   setIsOTPVerified,
   setIsPassChangedSuccess,
 } from '../../../redux/slices/CommonSlice';
-import {login} from '../../../api/ApiServices';
-import {REGEX_EMAIL} from '../../../constants/Data';
-import {RootState} from '../../../redux/store/Store';
+import { login } from '../../../api/ApiServices';
+import { REGEX_EMAIL } from '../../../constants/Data';
+import { RootState } from '../../../redux/store/Store';
 import styles from './StyleLogin';
 import {
   GoogleSignin,
@@ -53,13 +53,13 @@ const Login = () => {
   const [emailInput, setEmailInput] = useState('');
   const [passInput, setPassInput] = useState('');
   const [isSecure, setIsSecure] = useState(true);
-  const [err, setErr] = useState({email: '', password: ''});
+  const [err, setErr] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [deviceId, setDeviceId] = useState('');
   const [isInProgress, setIsInProgress] = useState(false);
   const [isSuccessResponse, setIsSuccessResponse] = useState(false);
-  const {fcmToken, isPassChangedSuccess, isOTPVerified} = useSelector(
+  const { fcmToken, isPassChangedSuccess, isOTPVerified } = useSelector(
     (state: RootState) => state.commonSlice,
   );
   useEffect(() => {

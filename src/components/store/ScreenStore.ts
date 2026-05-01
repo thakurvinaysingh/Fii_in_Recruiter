@@ -35,7 +35,9 @@ import JobsAppliedCandidate from '../../screens/main/scheduled_interviews/jobs_a
 import JobDetails from '../home/posted_jobs/job_details/JobDetails';
 import InterviewDetails from '../../screens/main/scheduled_interviews/interview_details/InterviewDetails';
 import CandidateAppliedJobs from '../../screens/main/candidate_profile/candidate_applied_jobs/CandidateAppliedJobs';
+import InterviewCalendar from '../../screens/main/interview_calendar/InterviewCalendar';
 export {
+  InterviewCalendar,
   CandidateAppliedJobs,
   InterviewDetails,
   JobDetails,
