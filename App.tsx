@@ -273,21 +273,72 @@ const ChildApp = () => {
     } catch (err) {
       console.warn('Error while getting token:', err);
     } finally {
-      SplashScreen.hide();
+      try {
+        SplashScreen.hide();
+      } catch (e) {
+        console.warn('SplashScreen.hide() failed:', e);
+      }
       setIsReady(true);
     }
   };
 
   // Effects
   useEffect(() => {
-    setupNotificationChannel();
-    requestNotificationPermission();
-    getAuthToken();
+    // Hard fallback: never let the native splash screen stay up for more
+    // than 4 seconds. Without this, any failure during startup (Firebase,
+    // AsyncStorage, notification permission, etc.) leaves the splash
+    // covering the entire UI, which looks like the app is frozen on the
+    // logo with no error message.
+    const splashFallback = setTimeout(() => {
+      try {
+        SplashScreen.hide();
+      } catch (e) {
+        // ignore – splash may already be hidden
+      }
+      setIsReady(true);
+    }, 4000);
+
+    // Run startup tasks defensively – none of them should block the UI.
+    (async () => {
+      try {
+        await setupNotificationChannel();
+      } catch (e) {
+        console.warn('setupNotificationChannel failed:', e);
+      }
+      try {
+        await requestNotificationPermission();
+      } catch (e) {
+        console.warn('requestNotificationPermission failed:', e);
+      }
+      try {
+        await getAuthToken();
+      } catch (e) {
+        console.warn('getAuthToken failed:', e);
+        try {
+          SplashScreen.hide();
+        } catch (_) {}
+        setIsReady(true);
+      }
+      clearTimeout(splashFallback);
+    })();
+
+    return () => clearTimeout(splashFallback);
   }, []);
 
   useEffect(() => {
-    const cleanup = setupNotificationHandlers();
-    return cleanup;
+    let cleanup: (() => void) | undefined;
+    try {
+      cleanup = setupNotificationHandlers();
+    } catch (e) {
+      console.warn('setupNotificationHandlers failed:', e);
+    }
+    return () => {
+      try {
+        cleanup && cleanup();
+      } catch (e) {
+        console.warn('cleanup notification handlers failed:', e);
+      }
+    };
   }, []);
 
   useEffect(() => {
